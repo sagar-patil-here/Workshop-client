@@ -160,6 +160,65 @@ h1, h2, h3, h4 {
     margin-right: auto;
 }
 
+/* Car Brands Marquee */
+.brands-marquee {
+    margin-top: 60px;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    animation: scroll 30s linear infinite;
+    flex-shrink: 0;
+    padding-right: 60px; /* Match gap to ensure seamless loop */
+}
+
+/* Remove the delay hack, just use smooth linear scroll */
+.marquee-content:nth-child(2) {
+    animation-delay: 0s;
+}
+
+.brand-logo {
+    height: 60px;
+    width: 100px; /* Fixed width for uniformity */
+    object-fit: contain;
+    background: #ffffff; /* White background to ensure visibility */
+    padding: 10px;
+    border-radius: 8px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    filter: none; /* Remove filters that might hide the logo */
+}
+
+.brand-logo:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 .btn-primary {
     display: inline-block;
     padding: 15px 40px;
@@ -369,6 +428,22 @@ footer {
 
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 3rem; }
+
+    .brands-marquee {
+        margin-top: 40px;
+    }
+
+    .marquee-content {
+        gap: 30px;
+        padding-right: 30px;
+    }
+
+    .brand-logo {
+        height: 40px;
+        width: 70px;
+        padding: 5px;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;

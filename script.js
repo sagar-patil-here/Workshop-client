@@ -93,6 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 
+    // Handle Broken Images in Marquee
+    document.querySelectorAll('.brand-logo').forEach(img => {
+        img.addEventListener('error', function() {
+            this.onerror = null; 
+            this.remove(); // Remove the broken image entirely
+        });
+    });
+
     // Smooth Scroll for Safari/Legacy
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
